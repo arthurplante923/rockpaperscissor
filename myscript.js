@@ -1,5 +1,5 @@
 function getComputer(){
-    let randomNumber = Math.floor(Math.random()*3)+1;
+    let randomNumber = Math.floor(Math.random()*3)+1; /*Pour avoir le choix de l'ordinateur */
     if(randomNumber==1){
         return"ROCHE"
     }else if(randomNumber==2){
@@ -8,11 +8,11 @@ function getComputer(){
         return "CISEAU"
     }
 }
-function getHumain(){
+function getHumain(){ /*Pour avoir le choix du joueur */
     let choice=prompt("ROCHE PAPIER OU CISEAU?").toUpperCase(); 
     return choice;
 }
-function play (computer_choice,player_choice,countordi,countplayer){
+function play (computer_choice,player_choice,countordi,countplayer){/*Avec les deux choix,décide le gagnant */
     if(computer_choice=="ROCHE"&&player_choice=="PAPIER"||computer_choice=="PAPIER"&&player_choice=="CISEAU"||computer_choice=="CISEAU"&&player_choice=="ROCHE"){
         return "L'humain gagne ";
     }else if(computer_choice=="ROCHE"&&player_choice=="CISEAU"||computer_choice=="PAPIER"&&player_choice=="ROCHE"||computer_choice=="CISEAU"&&player_choice=="PAPIER"){
@@ -21,11 +21,12 @@ function play (computer_choice,player_choice,countordi,countplayer){
         return "PARTI NUL";
     }
 }
-function round(){
+function round(){ /*Pour avoir plusieur round de roche papier ciseau */
     let ordi_count=0;
     let player_count=0;
     let null_count=0;
     let round=0;
+    let player_choice=prompt("Combien de points pour gagner au roche papier ciseau ?");
     do{
         round++;
         alert("ROUND "+(round));
@@ -49,7 +50,7 @@ function round(){
             null_count++;
         }
 
-    }while((player_count!=3)&&(ordi_count!=3));
+    }while((player_count!=player_choice)&&(ordi_count!=player_choice));
     alert("Le joueur a gagner "+player_count+" fois"+", l'ordi a gagner "+ordi_count+" fois."+"Il y a eu "+null_count+" nul.");
     if(player_count>ordi_count){
         alert("L'humain gagne la parti "+player_count+" a "+ordi_count);
