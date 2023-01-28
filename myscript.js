@@ -9,28 +9,37 @@ function getComputer(){
     }
 }
 function getHumain(){ /*Pour avoir le choix du joueur */
-    let choice=prompt("ROCHE PAPIER OU CISEAU?").toUpperCase(); 
-    return choice;
+    let choice_humain=prompt("ROCHE PAPIER OU CISEAU?").toUpperCase(); 
+    return choice_humain;
 }
-function play (computer_choice,player_choice,countordi,countplayer){/*Avec les deux choix,décide le gagnant */
-    if(computer_choice=="ROCHE"&&player_choice=="PAPIER"||computer_choice=="PAPIER"&&player_choice=="CISEAU"||computer_choice=="CISEAU"&&player_choice=="ROCHE"){
+function play (computer_choice,player_choice){ /*Avec les deux choix,décide le gagnant */
+    if(computer_choice=="ROCHE"&&player_choice=="PAPIER"
+    ||computer_choice=="PAPIER"&&player_choice=="CISEAU"
+    ||computer_choice=="CISEAU"&&player_choice=="ROCHE")
+    {
         return "L'humain gagne ";
-    }else if(computer_choice=="ROCHE"&&player_choice=="CISEAU"||computer_choice=="PAPIER"&&player_choice=="ROCHE"||computer_choice=="CISEAU"&&player_choice=="PAPIER"){
+    }
+    else if(computer_choice=="ROCHE"&&player_choice=="CISEAU"
+    ||computer_choice=="PAPIER"&&player_choice=="ROCHE"
+    ||computer_choice=="CISEAU"&&player_choice=="PAPIER")
+    {
         return "L'ordi gagne,car il est meilleur ";
-    }else{
+    }
+    else{
         return "PARTI NUL";
     }
 }
 function round(){ /*Pour avoir plusieur round de roche papier ciseau */
     let ordi_count=0;
     let player_count=0;
-    let null_count=0;
+    let nul_count=0;
     let round=0;
-    let player_choice=prompt("Combien de points pour gagner au roche papier ciseau ?");
+    let player_choice=prompt("Combien de points pour gagner le match au roche"
+    +"papier ciseau ?");
     do{
         round++;
         alert("ROUND "+(round));
-        console.log("ROUND"+(round));
+        console.log("ROUND "+(round));
         let humain=getHumain();
         let computer=getComputer();
         alert("L'ordi choisit "+computer+" et l'humain choisit "+humain);
@@ -38,20 +47,34 @@ function round(){ /*Pour avoir plusieur round de roche papier ciseau */
         console.log("L'ordi choisit "+computer);
         console.log("L'humain choisit "+humain);
         console.log(play(computer,humain));
+
         if(play(computer,humain)=="L'ordi gagne,car il est meilleur "){
             ordi_count++;
-            alert("L'ordi a "+ordi_count+" points et l'humain a "+player_count+" points");
-            console.log("L'ordi a "+ordi_count+" points et l'humain a "+player_count+" points");
+
+            alert("L'ordi a "+ordi_count+" points et l'humain a "
+            +player_count+" points");
+
+            console.log("L'ordi a "+ordi_count+" points et l'humain a "+
+            player_count+" points");
+
         }else if(play(computer,humain)=="L'humain gagne "){
             player_count++;
-            alert("L'ordi a "+ordi_count+" points et l'humain a "+player_count+" points");
-            console.log("L'ordi a "+ordi_count+" points et l'humain a "+player_count+" points");
+
+            alert("L'ordi a "+ordi_count+" points et l'humain a "+
+            player_count+" points");
+
+            console.log("L'ordi a "+ordi_count+" points et l'humain a "+
+            player_count+" points");
+
         }else{
-            null_count++;
+            nul_count++;
         }
 
     }while((player_count!=player_choice)&&(ordi_count!=player_choice));
-    alert("Le joueur a gagner "+player_count+" fois"+", l'ordi a gagner "+ordi_count+" fois."+"Il y a eu "+null_count+" nul.");
+    
+    alert("Le joueur a gagner "+player_count+" fois"+", l'ordi a gagner "+
+    ordi_count+" fois."+"Il y a eu "+nul_count+" nul.");
+    
     if(player_count>ordi_count){
         alert("L'humain gagne la parti "+player_count+" a "+ordi_count);
     }else if(ordi_count>player_count){
@@ -59,6 +82,7 @@ function round(){ /*Pour avoir plusieur round de roche papier ciseau */
     }else{
         alert("MATCH NUL "+player_count+" a "+ordi_count);
     }
-    return "Le joueur a gagner "+player_count+" fois"+", l'ordi a gagner "+ordi_count+" fois."+"Il y a eu "+null_count+" nul.";
+    return "Le joueur a gagner "+player_count+" fois"+", l'ordi a gagner "
+    +ordi_count+" fois."+"Il y a eu "+nul_count+" nul.";
 }
 console.log(round());
